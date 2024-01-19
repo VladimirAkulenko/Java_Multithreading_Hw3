@@ -17,7 +17,6 @@ public class Main {
             texts[i] = generateText("abc", 3 + random.nextInt(3));
         }
 
-
         Thread thread1 = new Thread(() -> {
             for (String text : texts) {
                 if (isPalindrom(text)) {
@@ -43,9 +42,11 @@ public class Main {
         });
 
         thread1.start();
-        thread1.join();
         thread2.start();
         thread3.start();
+        thread1.join();
+        thread2.join();
+        thread3.join();
 
         System.out.println("Красивых слов с длиной 3: " + counter3 + " шт");
         System.out.println("Красивых слов с длиной 4: " + counter4 + " шт");
